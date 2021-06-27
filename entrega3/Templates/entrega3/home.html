@@ -1,0 +1,199 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDIO ALTERNATIVO</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!--CSS PARA ERROR EN FORM-->
+    <link rel="stylesheet" href="./assets/css/modal_validacion.css">
+    <!--JQUERY BY GOOGLE-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!--LINK FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/4cfd4372ed.js" crossorigin="anonymous"></script>
+
+    <!--JQ VALIDATION-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    
+    <!--VALIDACION MODAL-->
+    <script src="./assets/js/validacion_modal.js"></script>
+
+    <link rel="stylesheet" href="{% static 'entrega3/css/darkmode.css' %}">
+
+    <!--JS API TIEMPO-->
+    <script src="./assets/js/apiTiempo.js"></script>
+
+</head>
+<body>
+<!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-newspaper fa-2x"></i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Noticias</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'formulario' %}">Contacto</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" tabindex="-1" data-target="#loginModal">Login/sign-up</a>
+                </li>
+                <li class="nav-item">
+                  <i class="fa fa-moon-o fa-2x" id="night-mode" aria-hidden="true"></i>
+                </li>
+            </ul>
+            </div>
+        </div>
+      </nav>
+
+
+      <!--ÚULTIMAS NOTICAS-->
+    <section class="my-5">
+        <h1 class="text-center my-5 text-uppercase pt-4" >Últimas noticias</h1>
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-8 col-12 mb-3">
+                <div class="card bg-dark text-white" id="noticia-grande">
+                    <img src="" class="card-img" alt="" id="not-imagen-1">
+                    <div class="card-img-overlay">
+                      <h4 class="card-title badge badge-primary float-right" id="not-titulo-1"></h4>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="card bg-dark text-white" id="noticia-chica-1">
+                    <img src="" class="card-img" alt="" id="not-imagen-c1">
+                    <div class="card-img-overlay">
+                      <h5 class="card-title badge badge-danger float-right" id="not-titulo-c1"></h5>
+                    </div>
+                  </div>
+                  <div class="card bg-dark text-white mt-3" id="noticia-chica-2">
+                    <img src="" class="card-img" alt="" id="not-imagen-c2">
+                    <div class="card-img-overlay">
+                      <h4 class="card-title badge badge-success float-right" id="not-titulo-c2"></h4>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>    
+    </section>
+
+    <!--RESUMEN NOTICIAS-->
+    <section>
+      <h1 class="text-center my-5 text-uppercase pt-4" >Todas las noticias</h1>
+        <div class="container-fluid my-5">
+          <div class="row" id="noticias-cortas">
+            
+          </div>
+
+          </div>
+    </section>
+
+
+    <!--COMUNIDAD-->
+    <section>
+
+      <h1 class="text-center my-5 text-uppercase">comunidad</h1>
+
+      <div id="carouselExampleControls" class="carousel slide container-fluid my-5" data-ride="carousel">
+        <div class="carousel-inner" >
+          <div class="carousel-item active">
+            <img src="{% static 'entrega3/img/Amigos-celulares1.jpg' %}" class="d-block w-100" alt="..." style="height:360px">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'entrega3/img/millenials.jpg' %}" class="d-block w-100" alt="..." style="height:360px">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'entrega3/img/WhatsApp-celular-telefono.jpg' %}" class="d-block w-100" alt="..." style="height:360px">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </section>
+
+    <!--ÚNETE-->
+    <section class="text-center mb-5">
+      <h1 class="text-center my-5 text-uppercase">Únete a esta gran  comunidad</h1>
+      <a href="{% url 'formulario' %}"> <button type="button"class="btn btn-success btn-lg">Quiero participar!</button> </a>
+    </section>
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Acceso usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <form name="form-modal" id="form-modal">
+                  <div class="form-group">
+                    <label for="modalLoginEmail">Usuario</label>
+                    <input type="text" class="form-control" id="modalLoginEmail" aria-describedby="emailHelp" name="emailValidation">
+                  </div>
+                  <div class="form-group">
+                    <label for="modalLoginPswd">Contrase&ntilde;a</label>
+                    <input type="password" class="form-control" id="modalLoginPswd" name="contrasenaValidation">
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary" id="modalSubmit">Ingresar</button>
+                    <button type="button" class="btn btn-danger" id="modalCancel" data-dismiss="modal">Cancelar</button>
+                  </div>
+                </form>
+              </div>   
+                <div class="modal-footer text-center">
+                  <a href="{% url 'formulario' %}">Registrarme</a>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!--API TIEMPO-->
+    <h3 id="ubicacion" class="text-center text-uppercase mt-5"></h3>
+    <section>
+      <div class="container">
+        <div class="row" id="api-tiempo">
+
+        </div>
+      </div>
+    </section>
+
+  <!--FOOTER-->
+    <footer class=" text-center bg-warning">
+      <h5  class="py-3 mt-5">COMUNIDAD DE ESTUDIANTES</h5>
+    </footer>
+  <!--JS API NOTICIAS-->
+      <script src="{% static 'entrega3/js/consultanoticiasus.js' %}"></script>
+      <script src="{% static 'entrega3/js/darkmode.js' %}"></script>
+</body>
+</html>
