@@ -1,68 +1,75 @@
 {%load static%}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Noticia</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <!--CSS PARA ERROR EN FORM-->
-    <link rel="stylesheet" href="./assets/css/modal_validacion.css">
+    <link rel="stylesheet" href="{% static 'entrega3/css/modal_validacion.css' %}">
     <!--JQUERY BY GOOGLE-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
 
     <!--LINK FONTAWESOME-->
     <script src="https://kit.fontawesome.com/4cfd4372ed.js" crossorigin="anonymous"></script>
 
     <!--JQ VALIDATION-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-    
+
     <!--VALIDACION MODAL-->
-    <script src="./assets/js/validacion_modal.js"></script>
+    <script src="{% static 'entrega3/js/validacion_modal.js' %}"></script>
 
     <link rel="stylesheet" href="{% static 'entrega3/css/darkmode.css' %}">
 
     <!--JS API TIEMPO-->
-    <script src="./assets/js/apiTiempo.js"></script>
+    <script src="{% static 'entrega3/js/apiTiempo.js' %}"></script>
 
 </head>
+
 <body>
-<!--NAVBAR-->
+    <!--NAVBAR-->
     <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top mb-5">
         <div class="container">
             <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-newspaper fa-2x"></i></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'noticias' %}">Noticias</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'formulario' %}">Contacto</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" tabindex="-1" data-target="#loginModal">Login/sign-up</a>
-                </li>
-                <li class="nav-item">
-                  <i class="fa fa-moon-o fa-2x" id="night-mode" aria-hidden="true"></i>
-                </li>
-            </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'noticias' %}">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'formulario' %}">Contacto</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" tabindex="-1"
+                            data-target="#loginModal">Login/sign-up</a>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fa fa-moon-o fa-2x" id="night-mode" aria-hidden="true"></i>
+                    </li>
+                </ul>
             </div>
         </div>
-      </nav>
-      <h1 class="text-center my-5 pt-5">Editar Noticias</h1>
-      <section class="container mb-5">
+    </nav>
+    <h1 class="text-center my-5 pt-5">Editar Noticias</h1>
+    <section class="container mb-5">
         <div class="container">
             <form method="post" action="" id="formulario-agregar">
                 <!-- {% csrf_token %}
@@ -72,53 +79,41 @@
                 </div> -->
                 <div class="card-columns container mt-5">
                     {% for noticia in noticias%}
-                    
-                      <div class="row">
-                          <div class="col-12 col-md-12">
-                              <div class="card">
-                                  <img src="..." class="card-img-top" alt="...">
-                                  <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-12 col-md-12">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
                                     <h5 class="card-title">{{noticia.titulo}}</h5>
                                     <p class="card-text">{{noticia.contenido}}</p>
                                     <h6 class="font-italic">{{noticia.autor}}</h6>
                                     <span class="text-muted">{{noticia.fecha}}</span>
-                                  </div>
-                                  <div class="card-body">
-                                    
-                                    <a href="{% url 'editar-noticia' noticia.idNoticias %}" class="btn btn-primary">Editar</a>
-                                    <a href="{%url 'eliminar-noticia' noticia.idNoticia%}" class="card-link">Eliminar</a>
-                                  </div>
                                 </div>
-                          </div>
-                
-                      </div>
-                      
-                    
-                    
-          
+                                <div class="card-body">
+                                    <a href="{% url 'editar-noticia' noticia.idNoticias %}"
+                                        class="btn btn-primary">Editar</a>
+                                    <a href="{%url 'eliminar-noticia' noticia.idNoticia%}"
+                                        class="card-link">Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {%endfor%}
-                  </div>
-    
+                </div>
                 <input type="submit" class="btn btn-success" id="enviar" value="Agregar">
                 <input type="reset" class="btn btn-secondary" id="limpiar" value="Limpiar">
-    
                 <div id="mensaje" class="alert alert-success" role="alert" hidden>{{ mensaje }}</div>
             </form>
         </div>
-
-      </section>
-
-    
-
-
-
-
-  <!--FOOTER-->
+    </section>
+    <!--FOOTER-->
     <footer class=" text-center bg-warning">
-      <h5  class="py-3 mt-5">COMUNIDAD DE ESTUDIANTES</h5>
+        <h5 class="py-3 mt-5">COMUNIDAD DE ESTUDIANTES</h5>
     </footer>
-  <!--JS API NOTICIAS-->
-      <script src="{% static 'entrega3/js/consultanoticiasus.js' %}"></script>
-      <script src="{% static 'entrega3/js/darkmode.js' %}"></script>
+    <!--JS API NOTICIAS-->
+    <script src="{% static 'entrega3/js/consultanoticiasus.js' %}"></script>
+    <script src="{% static 'entrega3/js/darkmode.js' %}"></script>
 </body>
+
 </html>
