@@ -25,7 +25,6 @@
     <script src="./assets/js/validacion_modal.js"></script>
 
     <link rel="stylesheet" href="{% static 'entrega3/css/darkmode.css' %}">
-    <link rel="stylesheet" href="{% static 'entrega3/css/float.css' %}">
 
     <!--JS API TIEMPO-->
     <script src="./assets/js/apiTiempo.js"></script>
@@ -45,7 +44,7 @@
                 <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'noticias' %}">Noticias</a>
+                <a class="nav-link" href="{% url 'noticias' %}">Noticias</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'formulario' %}">Contacto</a>
@@ -62,56 +61,25 @@
             </div>
         </div>
       </nav>
-      <h1 class="text-center my-5 pt-5">LISTADO DE NOTICIAS</h1>
 
-      <a href="{% url 'agregar-noticia' %}" class="float">
-        <i class="fa fa-plus my-float"></i>
-        </a>
 
+      <h1 class="text-center my-5 pt-5">Agrega Categoria</h1>
       <section class="container mb-5">
-        <div class="card-columns container mt-5">
-          {% for noticia in noticias%}
-          
-            <div class="row">
-                <div class="col-12 col-md-12">
-                    <div class="card">
-                        <img src="{% static 'entrega3/img/placeholder.jpg' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">{{noticia.titulo}}</h5>
-                          <p class="card-text">{{noticia.contenido}}</p>
-                          <h6 class="font-italic">{{noticia.autor}}</h6>
-                          <span class="text-muted">{{noticia.fecha}}</span>
-                        </div>
-                        <div class="card-body">
-                          <a href="#" class="card-link">Editar</a>
-                          <a href="{%url 'eliminar-noticia' noticia.idNoticia%}" class="card-link">Eliminar</a>
-                        </div>
-                      </div>
+        <div class="container">
+            <form method="post" action="" id="formulario-agregar">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
                 </div>
-      
-            </div>
-            
-          
-          
-
-          {%endfor%}
+    
+                <input type="submit" class="btn btn-success" id="enviar" value="Agregar">
+                <input type="reset" class="btn btn-secondary" id="limpiar" value="Limpiar">
+    
+                <div id="mensaje" class="alert alert-success" role="alert" hidden>{{ mensaje }}</div>
+            </form>
         </div>
 
       </section>
-
-    
-
-
-      
-    <!--API TIEMPO-->
-    <h3 id="ubicacion" class="text-center text-uppercase mt-5"></h3>
-    <section>
-      <div class="container">
-        <div class="row" id="api-tiempo">
-
-        </div>
-      </div>
-    </section>
 
   <!--FOOTER-->
     <footer class=" text-center bg-warning">

@@ -1,6 +1,6 @@
-from entrega3.forms import NoticiaForm
+from entrega3.forms import AutorForm, CategoriaForm, NoticiaForm
 from django.shortcuts import render, redirect
-from .models import Noticia
+from .models import Noticia, Categoria, Autor
 
 # Create your views here.
 def home(request):
@@ -33,5 +33,30 @@ def agregarNoticia(request):
         if formulario_add.is_valid:
             formulario_add.save()
             datos['mensaje'] = "Noticia publicada"
+
+    return render(request, 'entrega3/agregaNoticia.html', datos)
+
+# Agregar Categoria
+def agregarCategoria(request):
+    datos = {
+        'form': CategoriaForm() 
+        }
+    if request.method == 'POST':
+        formulario_add = CategoriaForm(request.POST)
+        if formulario_add.is_valid:
+            formulario_add.save()
+
+
+    return render(request, 'entrega3/agregaNoticia.html', datos)
+
+# Agregar Autor
+def agregarAutor(request):
+    datos = {
+        'form': AutorForm() 
+        }
+    if request.method == 'POST':
+        formulario_add = AutorForm(request.POST)
+        if formulario_add.is_valid:
+            formulario_add.save()
 
     return render(request, 'entrega3/agregaNoticia.html', datos)
