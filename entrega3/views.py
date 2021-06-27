@@ -35,3 +35,11 @@ def agregarNoticia(request):
             datos['mensaje'] = "Noticia publicada"
 
     return render(request, 'entrega3/agregaNoticia.html', datos)
+
+
+def editarNoticia(request,id):
+    noticia = Noticia.objects.get(idNoticia=id)
+    datos = {
+        'form': NoticiaForm(instance=noticia) 
+        }
+    return render(request, 'entrega3/editarNoticia.html')
