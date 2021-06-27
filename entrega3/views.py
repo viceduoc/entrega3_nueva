@@ -42,4 +42,11 @@ def editarNoticia(request,id):
     datos = {
         'form': NoticiaForm(instance=noticia) 
         }
-    return render(request, 'entrega3/editarNoticia.html')
+
+    if request.method == 'POST':
+        formulario_add = NoticiaForm(request.POST)
+        if formulario_add.is_valid:
+            formulario_add.save()
+            datos['mensaje'] = "Noticia editada"
+            
+    return render(request, 'entrega3/editarNoticia.html', datos)
