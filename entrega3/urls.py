@@ -5,6 +5,7 @@ from .views import agregarAutor, agregarCategoria, agregarNoticia, home, formula
 
 
 
+
 # Agregando path's
 urlpatterns = [
     path('', home, name="home"),
@@ -14,4 +15,6 @@ urlpatterns = [
     path('agregar-noticia', agregarNoticia, name="agregar-noticia"),
     path('agregar-categoria', agregarCategoria, name="agregar-categoria"),
     path('agregar-autor', agregarAutor, name="agregar-autor")
+    path('editar-noticia/<id>', editarNoticia, name="editar-noticia"),
+
 ]

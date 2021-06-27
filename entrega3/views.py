@@ -36,7 +36,7 @@ def agregarNoticia(request):
 
     return render(request, 'entrega3/agregaNoticia.html', datos)
 
-# Agregar Categoria
+
 def agregarCategoria(request):
     datos = {
         'form': CategoriaForm() 
@@ -60,3 +60,19 @@ def agregarAutor(request):
             formulario_add.save()
 
     return render(request, 'entrega3/agregaNoticia.html', datos)
+
+
+def editarNoticia(request,id):
+    noticia = Noticia.objects.get(idNoticia=id)
+    datos = {
+        'form': NoticiaForm(instance=noticia) 
+        }
+
+    if request.method == 'POST':
+        formulario_add = NoticiaForm(request.POST)
+        if formulario_add.is_valid:
+            formulario_add.save()
+            datos['mensaje'] = "Noticia editada"
+            
+    return render(request, 'entrega3/editarNoticia.html', datos)
+
