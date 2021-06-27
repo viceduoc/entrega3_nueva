@@ -44,7 +44,7 @@
                 <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{% url 'noticias' %}"></a>
+                <a class="nav-link" href="{% url 'noticias' %}">Noticias</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'formulario' %}">Contacto</a>
@@ -61,6 +61,8 @@
             </div>
         </div>
       </nav>
+
+
       <h1 class="text-center my-5 pt-5">Crear Noticias</h1>
       <section class="container mb-5">
         <div class="container">
@@ -72,17 +74,13 @@
     
                 <input type="submit" class="btn btn-success" id="enviar" value="Agregar">
                 <input type="reset" class="btn btn-secondary" id="limpiar" value="Limpiar">
+                <a href="{% url 'noticias' %}"><input type="button" class="btn btn-warning" id="volver" value="Volver"></a>
     
                 <div id="mensaje" class="alert alert-success" role="alert" hidden>{{ mensaje }}</div>
             </form>
         </div>
 
       </section>
-
-    
-
-
-
 
   <!--FOOTER-->
     <footer class=" text-center bg-warning">

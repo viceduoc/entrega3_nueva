@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias</title>
+    <title>MEDIO ALTERNATIVO</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <!--CSS PARA ERROR EN FORM-->
-    <link rel="stylesheet" href="{%static 'entrega3/css/modal_validacion.css' %}">
+    <link rel="stylesheet" href="./assets/css/modal_validacion.css">
     <!--JQUERY BY GOOGLE-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
@@ -22,13 +22,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     
     <!--VALIDACION MODAL-->
-    <script src="{%static 'entrega3/js/validacion_modal.js' %}"></script>
+    <script src="./assets/js/validacion_modal.js"></script>
 
     <link rel="stylesheet" href="{% static 'entrega3/css/darkmode.css' %}">
-    <link rel="stylesheet" href="{% static 'entrega3/css/float.css' %}">
 
     <!--JS API TIEMPO-->
-    <script src="{%static 'entrega3/js/apiTiempo.js' %}"></script>
+    <script src="./assets/js/apiTiempo.js"></script>
+
 </head>
 <body>
 <!--NAVBAR-->
@@ -61,44 +61,26 @@
             </div>
         </div>
       </nav>
-      <h1 class="text-center my-5 pt-5">LISTADO DE NOTICIAS</h1>
 
-      <a href="{% url 'agregar-noticia' %}" class="float">
-        <i class="fa fa-plus my-float"></i>
-        </a>
 
+      <h1 class="text-center my-5 pt-5">Agrega Autor</h1>
       <section class="container mb-5">
-        <div class="card-columns container mt-5">
-          {% for noticia in noticias%}
-            <div class="row">
-                <div class="col-12 col-md-12">
-                    <div class="card">
-                        <img src="{% static 'entrega3/img/placeholder.jpg' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">{{noticia.titulo}}</h5>
-                          <p class="card-text">{{noticia.contenido}}</p>
-                          <h6 class="font-italic">{{noticia.autor}}</h6>
-                          <span class="text-muted">{{noticia.fecha}}</span>
-                        </div>
-                        <div class="card-body">
-                          <a href="#" class="card-link">Editar</a>
-                          <a href="{%url 'eliminar-noticia' noticia.idNoticia%}" class="card-link">Eliminar</a>
-                        </div>
-                      </div>
+        <div class="container">
+            <form method="post" action="" id="formulario-agregar">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
                 </div>
-            </div>
-          {%endfor%}
+    
+                <input type="submit" class="btn btn-success" id="enviar" value="Agregar">
+                <input type="reset" class="btn btn-secondary" id="limpiar" value="Limpiar">
+    
+                <div id="mensaje" class="alert alert-success" role="alert" hidden>{{ mensaje }}</div>
+            </form>
         </div>
-      </section>
-    <!--API TIEMPO-->
-    <h3 id="ubicacion" class="text-center text-uppercase mt-5"></h3>
-    <section>
-      <div class="container">
-        <div class="row" id="api-tiempo">
 
-        </div>
-      </div>
-    </section>
+      </section>
+
   <!--FOOTER-->
     <footer class=" text-center bg-warning">
       <h5  class="py-3 mt-5">COMUNIDAD DE ESTUDIANTES</h5>
