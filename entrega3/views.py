@@ -1,3 +1,4 @@
+from entrega3.forms import NoticiaForm
 from django.shortcuts import render, redirect
 from .models import Noticia
 
@@ -8,8 +9,6 @@ def home(request):
 # agrengando segundo template al view 
 def formulario(request):
     return render(request, 'entrega3/formulario.html')
-
-
 
 def noticias(request):
     noticias = Noticia.objects.all()
@@ -23,3 +22,16 @@ def eliminarNoticia(request, id):
     noticia.delete()
 
     return redirect(to="noticias")
+
+# Agregar noticia
+def agregarNoticia(request):
+    datos = {
+        'form': NoticiaForm() 
+        }
+    if request.method == 'POST':
+        formulario_add = NoticiaForm(request.POST)
+        if formulario_add.is_valid:
+            formulario_add.save()
+            datos['mensaje'] = "Noticia publicada"
+
+    return render(request, 'entrega3/agregaNoticia.html', datos)
