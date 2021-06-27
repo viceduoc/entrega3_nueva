@@ -22,4 +22,4 @@ def eliminarNoticia(request, id):
     noticia = Noticia.objects.get(idNoticia=id)
     noticia.delete()
 
-    return redirect(to="noticias")  
+    return redirect(to="noticias")
