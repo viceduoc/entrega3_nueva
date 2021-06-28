@@ -72,9 +72,11 @@
                     {{ form.as_p }}
                 </div>
     
-                <input type="submit" class="btn btn-success" id="enviar" value="Agregar">
-                <input type="reset" class="btn btn-secondary" id="limpiar" value="Limpiar">
-    
+                <div class="row">
+                  <input type="submit" class="btn btn-warning" id="enviar" value="Agregar">
+                  <input type="reset" class="btn btn-secondary" id="limpiar" value="Limpiar">
+                  <a href="{% url 'agregar-noticia' %}"><input type="button" class="btn btn-secondary" id="volver" value="Volver"></a>
+                  </div>
                 <div id="mensaje" class="alert alert-success" role="alert" hidden>{{ mensaje }}</div>
             </form>
         </div>
