@@ -43,7 +43,7 @@ def agregarCategoria(request):
         }
     if request.method == 'POST':
         formulario_add = CategoriaForm(request.POST)
-        if formulario_add.is_valid:
+        if formulario_add.is_valid():
             formulario_add.save()
 
 
@@ -56,7 +56,7 @@ def agregarAutor(request):
         }
     if request.method == 'POST':
         formulario_add = AutorForm(request.POST)
-        if formulario_add.is_valid:
+        if formulario_add.is_valid():
             formulario_add.save()
 
     return render(request, 'entrega3/agregaAutor.html', datos)
@@ -70,7 +70,7 @@ def editarNoticia(request,id):
 
     if request.method == 'POST':
         formulario_add = NoticiaForm(request.POST)
-        if formulario_add.is_valid:
+        if formulario_add.is_valid():
             formulario_add.save()
             datos['mensaje'] = "Noticia editada"
             
