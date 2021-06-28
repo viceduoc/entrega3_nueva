@@ -47,7 +47,7 @@ def agregarCategoria(request):
             formulario_add.save()
 
 
-    return render(request, 'entrega3/agregaNoticia.html', datos)
+    return render(request, 'entrega3/agregaCategoria.html', datos)
 
 # Agregar Autor
 def agregarAutor(request):
@@ -59,7 +59,7 @@ def agregarAutor(request):
         if formulario_add.is_valid:
             formulario_add.save()
 
-    return render(request, 'entrega3/agregaNoticia.html', datos)
+    return render(request, 'entrega3/agregaAutor.html', datos)
 
 
 def editarNoticia(request,id):
