@@ -72,14 +72,14 @@
                     {{ form.as_p }}
                 </div>
                 <div class="row">
-                  <a href="{% url 'agregar-autor' %}"><input type="button" class="btn btn-warning" id="agregar-autor" value="+ Agregar Autor"></a>
+                  <a href="{% url 'agregar-autor' %}"><input type="button" class="btn btn-warning mx-3" id="agregar-autor" value="+ Agregar Autor"></a>
                   <a href="{% url 'agregar-categoria' %}"><input type="button" class="btn btn-warning" id="agregar-categoria" value="+ Agregar Categoria"></a>
                 </div>
    
                 <div class="row">
-                <input type="submit" class="btn btn-warning" id="enviar" value="Agregar">
-                <input type="reset" class="btn btn-secondary" id="limpiar" value="Limpiar">
-                <a href="{% url 'noticias' %}"><input type="button" class="btn btn-secondary" id="volver" value="Volver"></a>
+                  <input type="submit" class="btn btn-warning m-3" id="enviar" value="Agregar">
+                  <input type="reset" class="btn btn-secondary m-3" id="limpiar" value="Limpiar">
+                  <a href="{% url 'noticias' %}"><input type="button" class="btn btn-secondary m-3" id="volver" value="Volver"></a>
                 </div>
                 <div id="mensaje" class="alert alert-success" role="alert" hidden>{{ mensaje }}</div>
             </form>

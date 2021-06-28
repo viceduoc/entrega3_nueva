@@ -4,7 +4,11 @@ from .models import Noticia, Categoria, Autor
 
 # Create your views here.
 def home(request):
-    return render(request, 'entrega3/home.html')
+    noticias = Noticia.objects.all()
+    datos = {
+        'noticias' : noticias
+    }
+    return render(request, 'entrega3/home.html', datos)
 
 # agrengando segundo template al view 
 def formulario(request):
@@ -43,7 +47,7 @@ def agregarCategoria(request):
         }
     if request.method == 'POST':
         formulario_add = CategoriaForm(request.POST)
-        if formulario_add.is_valid:
+        if formulario_add.is_valid():
             formulario_add.save()
 
 
@@ -56,7 +60,7 @@ def agregarAutor(request):
         }
     if request.method == 'POST':
         formulario_add = AutorForm(request.POST)
-        if formulario_add.is_valid:
+        if formulario_add.is_valid():
             formulario_add.save()
 
     return render(request, 'entrega3/agregaAutor.html', datos)
@@ -69,9 +73,9 @@ def editarNoticia(request,id):
         }
 
     if request.method == 'POST':
-        formulario_add = NoticiaForm(request.POST)
-        if formulario_add.is_valid:
-            formulario_add.save()
+        formulario_edit = NoticiaForm(data=request.POST, instance=noticia)
+        if formulario_edit.is_valid():
+            formulario_edit.save()
             datos['mensaje'] = "Noticia editada"
             
     return render(request, 'entrega3/editarNoticia.html', datos)

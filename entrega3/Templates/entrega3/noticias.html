@@ -81,7 +81,7 @@
                           <span class="text-muted">{{noticia.fecha}}</span>
                         </div>
                         <div class="card-body">
-                          <a href="#" class="card-link">Editar</a>
+                          <a href="{%url 'editar-noticia' noticia.idNoticia%}" class="card-link">Editar</a>
                           <a href="{%url 'eliminar-noticia' noticia.idNoticia%}" class="card-link">Eliminar</a>
                         </div>
                       </div>
