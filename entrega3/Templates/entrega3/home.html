@@ -62,8 +62,8 @@
         </div>
       </nav>
 
-
-      <!--ÚULTIMAS NOTICAS-->
+       <!--ÚULTIMAS NOTICAS-->
+<!--
     <section class="my-5">
         <h1 class="text-center my-5 text-uppercase pt-4" >Últimas noticias</h1>
         <div class="container-fluid">
@@ -92,15 +92,35 @@
               </div>
             </div>
         </div>    
-    </section>
+    </section>-->
+
 
     <!--RESUMEN NOTICIAS-->
     <section>
       <h1 class="text-center my-5 text-uppercase pt-4" >Todas las noticias</h1>
         <div class="container-fluid my-5">
           <div class="row" id="noticias-cortas">
-            
           </div>
+          <div class="card-columns container mt-5">
+          {% for noticia in noticias%}
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="card">
+                        <img src="{% static 'entrega3/img/placeholder.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{noticia.titulo}}</h5>
+                          <p class="card-text">{{noticia.contenido}}</p>
+                          <h6 class="font-italic">{{noticia.autor}}</h6>
+                          <span class="text-muted">{{noticia.fecha}}</span>
+                        </div>
+                        <div class="card-body">
+                        </div>
+                      </div>
+                </div>
+            </div>
+          {%endfor%}
+        </div>
+
 
           </div>
     </section>
