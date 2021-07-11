@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'entrega3',
+    'rest_framework',
+    'api_noticia',
 ]
 
 MIDDLEWARE = [
