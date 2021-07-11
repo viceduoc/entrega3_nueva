@@ -23,6 +23,7 @@ class Noticia(models.Model):
     fecha = models.DateField(verbose_name="Fecha publicacion")
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
+    imagen = models.CharField(max_length=200, verbose_name="URL Imagen")
 
     def __str__(self):
         return self.titulo
