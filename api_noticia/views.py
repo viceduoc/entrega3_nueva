@@ -8,13 +8,21 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 
 
+
 # Create your views here.
 @api_view(['GET', 'POST'])
 def noticias(request):
+#     **-----------------------------**
+#       LISTANDO TODOS LAS NOTICIAS
+#     **-----------------------------** 
     if request.method == 'GET':
        lista_noticia = Noticia.objects.all()
        Serializer = NoticiaSerializer(lista_noticia, many=True) 
        return Response(Serializer.data)
+    
+#     **-----------------------------**
+#       AGREGANDO UNA NOTICIA
+#     **-----------------------------** 
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
@@ -24,3 +32,8 @@ def noticias(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+#     **----------------------------------**
+#       AGREGAR UNA ACTUALIZACION ELIMINAR
+#     **----------------------------------** 
