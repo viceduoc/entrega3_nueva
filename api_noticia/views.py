@@ -16,7 +16,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 def noticias(request):
 #     **-----------------------------**
 #       LISTANDO TODOS LAS NOTICIAS
@@ -45,6 +45,7 @@ def noticias(request):
 #     **----------------------------------** 
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def noticia(request, pk):
     """
     Instanciar el elemento singular desde la base de datos
