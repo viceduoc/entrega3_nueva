@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.base import Model
 
+
 # Modelo para noticias
 class Autor(models.Model):
     idAutor = models.IntegerField(primary_key=True, verbose_name="ID Autor")
@@ -23,6 +24,7 @@ class Noticia(models.Model):
     fecha = models.DateField(verbose_name="Fecha publicacion")
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
+    imagen = models.CharField(max_length=200, verbose_name="URL Imagen", null=True, blank=True, default="/static/entrega3/img/placeholder.jpg")
 
     def __str__(self):
         return self.titulo
